@@ -1,10 +1,11 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import { useState } from "react";
 
-import { Scanner } from './Scanner';
+import { Scanner } from "./Scanner";
 
 const meta: Meta<typeof Scanner> = {
   component: Scanner,
+  title: "Components/Scanner",
 };
 
 export default meta;
@@ -12,7 +13,7 @@ type Story = StoryObj<typeof Scanner>;
 
 export const Default: Story = {
   args: {},
-  render: function Comp({ ...args }){
+  render: function Comp({ ...args }) {
     const [code, setCode] = useState("");
 
     return (
@@ -21,6 +22,6 @@ export const Default: Story = {
 
         <div>{code}</div>
       </div>
-    )
+    );
   },
 };
