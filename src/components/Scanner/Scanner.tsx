@@ -11,5 +11,5 @@ export const Scanner = ({ onCodeRead }: Props) => {
     },
   });
 
-  return <video ref={ref} width="500" height="500" />;
+  return <video ref={ref} width="100%" />;
 };
