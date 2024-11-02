@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import godSound from "@/assets/god.wav";
 import defaultSound from "@/assets/read-barcode.mp3";
@@ -24,7 +25,7 @@ export const Borrow = () => {
     const audio = new Audio(sound);
 
     audio.play().catch((error) => {
-      console.error("音声の再生に失敗しました:", error);
+      toast.error(`音声の再生に失敗しました: ${error}`);
     });
 
     setCode(code);
