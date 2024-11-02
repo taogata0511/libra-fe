@@ -5,7 +5,7 @@ import godSound from "@/assets/god.wav";
 import defaultSound from "@/assets/read-barcode.mp3";
 import { Scanner } from "@/components/Scanner";
 import { BorrowDetail } from "@/features/Borrow/BorrowDetail.tsx";
-import { drawLottery } from "@/utils/lottery.ts";
+import { drawLottery } from "@/utils/lottery/lottery.ts";
 
 export const Borrow = () => {
   const [code, setCode] = useState("");

@@ -1,3 +1,6 @@
+/// <reference types="vitest" />
+import * as path from "node:path";
+
 import basicSsl from "@vitejs/plugin-basic-ssl";
 import react from "@vitejs/plugin-react-swc";
 import { defineConfig } from "vite";
@@ -13,7 +16,7 @@ export default defineConfig({
     VitePWA({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "apple-touch-icon.png"],
-      injectRegister: "auto", //ここの記述
+      injectRegister: "auto",
       manifest: {
         name: "libra",
         short_name: "libra",
@@ -49,5 +52,14 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     port: 3000,
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    include: ["src/**/*.test.{js,ts,jsx,tsx}"],
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+    setupFiles: ["./vitest-setup.ts"],
   },
 });
