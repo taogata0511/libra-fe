@@ -8,6 +8,7 @@ import { Error } from "@/components/Error";
 import { Spacer } from "@/components/Spacer";
 import { DonateSkeleton } from "@/features/Donate/DonateSkeleton.tsx";
 import { useBook } from "@/hooks/useBook.ts";
+import { playLotteryDonateSound } from "@/utils/lottery";
 
 interface Props {
   code: string;
@@ -20,8 +21,14 @@ export const Donate = ({ code }: Props) => {
     return <Error />;
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
     // 本を借りる処理
+    const sound = playLotteryDonateSound();
+
+    if (sound) {
+      await sound.play();
+    }
+
     toast.success("寄贈しました");
   };
 
