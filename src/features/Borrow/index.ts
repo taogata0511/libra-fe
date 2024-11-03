@@ -1,1 +1,1 @@
-export * from "./Borrow.tsx";
+export * from "./BorrowPage.tsx";

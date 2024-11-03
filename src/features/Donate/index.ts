@@ -1,1 +1,1 @@
-export * from "./Donate.tsx";
+export * from "./DonatePage.tsx";

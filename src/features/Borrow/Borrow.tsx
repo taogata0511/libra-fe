@@ -1,39 +1,29 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { Suspense } from "react";
 
-import godSound from "@/assets/god.wav";
-import defaultSound from "@/assets/read-barcode.mp3";
-import { Scanner } from "@/components/Scanner";
-import { BorrowDetail } from "@/features/Borrow/BorrowDetail.tsx";
-import { drawLottery } from "@/utils/lottery/lottery.ts";
+import { Error } from "@/components/Error";
+import { Loading } from "@/components/Loading";
+import { useBook } from "@/hooks/useBook.ts";
 
-export const Borrow = () => {
-  const [code, setCode] = useState("");
+interface Props {
+  code: string;
+}
 
-  const handleCodeRead = async (code: string) => {
-    if (
-      !code.startsWith("978") &&
-      !code.startsWith("979") &&
-      !code.startsWith("491")
-    ) {
-      return;
-    }
+export const Borrow = ({ code }: Props) => {
+  const { data, isError } = useBook(code);
 
-    const isHit = drawLottery(8192);
-    const sound = isHit ? godSound : defaultSound;
+  if (isError) {
+    return <Error />;
+  }
 
-    const audio = new Audio(sound);
+  return (
+    <Suspense fallback={<Loading />}>
+      <div>{data.title}</div>
 
-    audio.play().catch((error) => {
-      toast.error(`音声の再生に失敗しました: ${error}`);
-    });
+      <img src={data.cover} alt={`${data.title}のカバー画像`} />
 
-    setCode(code);
-  };
+      <div>{data.salesDate}</div>
 
-  return code ? (
-    <BorrowDetail code={code} />
-  ) : (
-    <Scanner onCodeRead={handleCodeRead} />
+      <button>借りる</button>
+    </Suspense>
   );
 };

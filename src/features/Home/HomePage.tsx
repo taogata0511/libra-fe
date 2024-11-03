@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 
-export const Home = () => {
+export const HomePage = () => {
   return (
     <div className={clsx("flex", "flex-col", "gap-4")}>
       <Link to="/rent">借りる</Link>
