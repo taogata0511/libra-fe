@@ -1,4 +1,6 @@
 import "../src/index.css";
+import "react-toastify/dist/ReactToastify.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import type { Preview } from "@storybook/react";
 

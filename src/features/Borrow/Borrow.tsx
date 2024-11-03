@@ -1,7 +1,12 @@
+import clsx from "clsx";
 import { Suspense } from "react";
+import { toast } from "react-toastify";
 
+import { Book } from "@/components/Book";
+import { Button } from "@/components/Button";
 import { Error } from "@/components/Error";
-import { Loading } from "@/components/Loading";
+import { Spacer } from "@/components/Spacer";
+import { BorrowSkeleton } from "@/features/Borrow/BorrowSkeleton.tsx";
 import { useBook } from "@/hooks/useBook.ts";
 
 interface Props {
@@ -15,15 +20,18 @@ export const Borrow = ({ code }: Props) => {
     return <Error />;
   }
 
+  const handleClick = () => {
+    // 本を借りる処理
+    toast.success("借りました");
+  };
+
   return (
-    <Suspense fallback={<Loading />}>
-      <div>{data.title}</div>
+    <Suspense fallback={<BorrowSkeleton />}>
+      <Book book={data} />
 
-      <img src={data.cover} alt={`${data.title}のカバー画像`} />
+      <Spacer tag="div" />
 
-      <div>{data.salesDate}</div>
-
-      <button>借りる</button>
+      <Button className={clsx("w-full")} label="借りる" onClick={handleClick} />
     </Suspense>
   );
 };
