@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useState } from "react";
 
 import { Scanner } from "@/components/Scanner";
@@ -12,6 +13,7 @@ export const DonatePage = () => {
     <Donate code={code} />
   ) : (
     <Scanner
+      className={clsx("w-full", "max-h-28", "object-cover")}
       onCodeRead={(code) => readBarcode(code, setCode, playLotteryReadSound)}
     />
   );

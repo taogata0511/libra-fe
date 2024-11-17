@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const HomePage = () => {
   return (
     <div className={clsx("flex", "flex-col", "gap-4")}>
-      <Link to="/rent">借りる</Link>
+      <Link to="/borrow">借りる</Link>
 
       <Link to="/return">返す</Link>
 

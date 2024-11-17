@@ -15,3 +15,12 @@ export interface RakutenBookResponse {
     },
   ];
 }
+
+export interface BookResponse {
+  id: number;
+  title: string;
+  cover: string;
+  code: string;
+  createdAt: string;
+  updatedAt: string;
+}

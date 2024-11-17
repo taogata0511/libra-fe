@@ -18,7 +18,7 @@ export const Book = ({ book }: Props) => {
       <Image
         className={clsx("w-full")}
         src={book.cover}
-        alt="スキャンした書籍のカバー画像"
+        alt={`${book.title}のカバー画像`}
       />
     </div>
   );

@@ -1,15 +1,16 @@
 import { useZxing } from "react-zxing";
 
 interface Props {
+  className?: string;
   onCodeRead: (code: string) => void;
 }
 
-export const Scanner = ({ onCodeRead }: Props) => {
+export const Scanner = ({ className, onCodeRead }: Props) => {
   const { ref } = useZxing({
     onDecodeResult(result) {
       onCodeRead(result.getText());
     },
   });
 
-  return <video ref={ref} width="100%" />;
+  return <video className={className} ref={ref} />;
 };
